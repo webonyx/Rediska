@@ -670,7 +670,7 @@ class Rediska_Zend_Cache_Backend_Redis extends Zend_Cache_Backend implements Zen
     protected function _getTransactionByKey($key)
     {
         $connection = $this->getRediska()->getConnectionByKeyName($key);
-        if(!$this->_transaction[$connection->getAlias()]){
+        if(!isset($this->_transaction[$connection->getAlias()])){
             $this->_transaction[$connection->getAlias()] = $this->getRediska()
                 ->transaction($connection);
         }
